@@ -16,11 +16,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TaskController {
 
-
     private final DbService service;
     private final TaskMapper taskMapper;
-
-
 
     @GetMapping
     public List<TaskDto> getTasks() {
@@ -32,7 +29,9 @@ public class TaskController {
     public TaskDto getTask(@PathVariable Long taskId) {
       Task task =service.getTask(taskId);
 
-        return new TaskDto(task.getId(), task.getTitle(), task.getContent());
+        return new TaskDto(task.getId(),
+                task.getTitle(),
+                task.getContent());
     }
 
     @DeleteMapping
