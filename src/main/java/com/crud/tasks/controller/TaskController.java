@@ -29,9 +29,7 @@ public class TaskController {
     public TaskDto getTask(@PathVariable Long taskId) {
       Task task =service.getTask(taskId);
 
-        return new TaskDto(task.getId(),
-                task.getTitle(),
-                task.getContent());
+        return taskMapper.mapToTaskDto(task);
     }
 
     @DeleteMapping
