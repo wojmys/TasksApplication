@@ -5,10 +5,13 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Repository
 public interface TaskRepository extends CrudRepository <Task,Long>{
-    List<Task> findAll();
-    Task findById(long id);
+
+     List<Task> findAll();
+     Task save(Task task);
+     Task findById(long id);
+     Task deleteById(long id);
 }
