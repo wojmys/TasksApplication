@@ -3,6 +3,7 @@ package com.crud.tasks.trello.client;
 import com.crud.tasks.domain.CreatedTrelloCard;
 import com.crud.tasks.domain.TrelloBoardDto;
 import com.crud.tasks.domain.TrelloCardDto;
+import com.crud.tasks.domain.TrelloListDto;
 import com.crud.tasks.trello.config.TrelloConfig;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,8 +15,10 @@ import org.springframework.web.client.RestTemplate;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import static java.util.Optional.ofNullable;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
@@ -85,4 +88,20 @@ class TrelloClientTest {
             assertEquals("test task", newCard.getName());
             assertEquals("http://test.com", newCard.getShortUrl());
         }
+    @Test
+    public void shouldReturnEmptyList() throws URISyntaxException {
+        // Given
+
+        URI uri = new URI("http://test.com/members/test/boards?key=test&token=test&fields=name,id&lists=all");
+        when(restTemplate.getForObject(uri, TrelloBoardDto[].class)).thenReturn(null);
+
+        // when
+        TrelloBoardDto[] boardsResponse = restTemplate.getForObject(uri, TrelloBoardDto[].class);
+        List<TrelloBoardDto>actualList =Arrays.asList(ofNullable(boardsResponse).orElse(new TrelloBoardDto[0]));
+
+         ;
+        //then
+        assertEquals(0,actualList.size());
+
+    }
     }
