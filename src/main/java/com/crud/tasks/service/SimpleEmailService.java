@@ -36,7 +36,7 @@ public class SimpleEmailService {
         }
     }
 
-    private SimpleMailMessage createMailMessage(final Mail mail) {
+        SimpleMailMessage createMailMessage(final Mail mail) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
         mailMessage.setSubject(mail.getSubject());
@@ -46,8 +46,6 @@ public class SimpleEmailService {
 
         if (ccCheck.isPresent()) {
             mailMessage.setCc(mailMessage.getCc());
-        } else {
-            return mailMessage;
         }
         return mailMessage;
     }
