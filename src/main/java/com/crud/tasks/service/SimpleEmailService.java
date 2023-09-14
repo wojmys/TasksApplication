@@ -17,13 +17,6 @@ public class SimpleEmailService {
 
     private final JavaMailSender javaMailSender;
 
-    Mail mail = Mail.builder()
-            .mailTo("aaa@gmail.com")
-            .subject("sb")
-            .message("message")
-            .build();
-
-
     public void send(final Mail mail) {
         log.info("Starting email preparation...");
 
@@ -42,13 +35,12 @@ public class SimpleEmailService {
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
-        Optional<String> ccCheck = Optional.of(mail.getToCc());
-
-        if (ccCheck.isPresent()) {
-            mailMessage.setCc(mailMessage.getCc());
-        }
+//        Optional<String> ccCheck = Optional.of(mail.getToCc());
+//
+//        if (ccCheck.isPresent()) {
+//            mailMessage.setCc(mailMessage.getCc());
+//        }
         return mailMessage;
     }
-
 
 }
