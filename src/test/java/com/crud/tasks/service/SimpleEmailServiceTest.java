@@ -1,6 +1,7 @@
 package com.crud.tasks.service;
 
 import com.crud.tasks.domain.Mail;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -30,7 +31,12 @@ class SimpleEmailServiceTest {
     void shouldSendEmail() {
 
     //given
-        Mail mail = new Mail("test@test.com", "Test", "Test Message");
+        Mail mail =  Mail.builder()
+                .mailTo("test@test.com")
+                .message("text")
+                .subject("subject")
+                .toCc("")
+                .build();
 
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(mail.getMailTo());
