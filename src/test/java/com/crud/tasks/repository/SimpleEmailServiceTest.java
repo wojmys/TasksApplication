@@ -1,6 +1,7 @@
-package com.crud.tasks.service;
+package com.crud.tasks.repository;
 
 import com.crud.tasks.domain.Mail;
+import com.crud.tasks.service.SimpleEmailService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
