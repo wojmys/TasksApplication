@@ -5,13 +5,9 @@ import com.crud.tasks.domain.TaskDto;
 import com.crud.tasks.service.DbService;
 import lombok.RequiredArgsConstructor;
 import com.crud.tasks.mapper.TaskMapper;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-
-import java.time.LocalDate;
 import java.util.List;
 
 
@@ -23,6 +19,7 @@ public class TaskController {
 
     private final DbService service;
     private final TaskMapper taskMapper;
+
 
     @GetMapping
     public ResponseEntity<List<TaskDto>> getTasks() {
@@ -52,7 +49,6 @@ public class TaskController {
     public ResponseEntity<Void> createTask(@RequestBody TaskDto taskDto) {
         Task task = taskMapper.mapToTask(taskDto);
         service.saveTask(task);
-
         return ResponseEntity.ok().build();
     }
 }
