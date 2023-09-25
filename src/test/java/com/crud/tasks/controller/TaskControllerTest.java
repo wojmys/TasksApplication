@@ -107,7 +107,7 @@ class TaskControllerTest {
     @Test
     void shouldUpdateTask() throws Exception {
 
-        TaskDto requestedTaskDto = new TaskDto(1L, "updatedTitle", "updatedTitle");
+        TaskDto requestedTaskDto = new TaskDto(1L, "updatedTitle", "updatedContent");
         Task task = new Task(1L, "updatedTitle", "updatedContent");
         when(taskMapper.mapToTask(any())).thenReturn(task);
         when(service.saveTask(any())).thenReturn(task);
