@@ -19,9 +19,7 @@ import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringJUnitWebConfig
@@ -110,7 +108,7 @@ class TaskControllerTest {
     void shouldUpdateTask() throws Exception {
 
         TaskDto requestedTaskDto = new TaskDto(1L, "updatedTitle", "updatedTitle");
-        Task task = new Task(1L,"updatedTitle","updatedContent");
+        Task task = new Task(1L, "updatedTitle", "updatedContent");
         when(taskMapper.mapToTask(any())).thenReturn(task);
         when(service.saveTask(any())).thenReturn(task);
         when(taskMapper.mapToTaskDto(any())).thenReturn(requestedTaskDto);
