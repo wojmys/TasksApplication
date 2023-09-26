@@ -28,7 +28,6 @@ class TaskControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
     @MockBean
     private DbService service;
     @MockBean

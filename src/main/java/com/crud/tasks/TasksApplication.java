@@ -11,7 +11,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 
 @OpenAPIDefinition
 @SpringBootApplication
-@EnableScheduling
+//@EnableScheduling
 public class TasksApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
