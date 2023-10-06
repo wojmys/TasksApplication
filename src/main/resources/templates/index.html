@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>My welcome page</title>
+    <style>
+        * {
+            font-weight: bold;
+        }
+        span{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
 <h1>First impression of my page</h1>
@@ -10,8 +18,28 @@
 <span th:text="${variable}"></span>
 <br>
 
-<!--/*thymesVar id="one" type="com.crud.tasks.controller.StaticWebPageController"*/-->
+
 <!--/*thymesVar id="two" type="com.crud.tasks.controller.StaticWebPageController"*/-->
-<span th:text="${one} + ${two}"></span>
+<span th:text="${two} "></span>
+<span th:text="${multiply}"></span>
+<span th:text="${two}"></span>
+<span th:text="${equal}"></span>
+<span th:text="${two} * ${two}"></span>
+<br>
+<span th:text="${two} "></span>
+<span th:text="${multiply}"></span>
+<span th:text="${two}"></span>
+<span th:text="${plus}"></span>
+<span th:text="${two}"></span>
+<span th:text="${equal}"></span>
+<span th:text="${two} * ${two}+${two}"></span>
+<br>
+<span th:text="${two} "></span>
+<span th:text="${minus}"></span>
+<span th:text="${two}"></span>
+<span th:text="${multiply}"></span>
+<span th:text="${two}"></span>
+<span th:text="${equal}"></span>
+<span th:text="${two} - ${two} * ${two}"></span>
 </body>
 </html>
