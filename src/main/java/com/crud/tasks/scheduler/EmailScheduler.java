@@ -26,7 +26,7 @@ public class EmailScheduler {
                 new Mail(adminConfig.getAdminMail(),
                         SUBJECT,
                         "Currently in database you got: " + size + taskVariable,
-                        null
-                ));
+                        null),
+                "daily");
     }
 }

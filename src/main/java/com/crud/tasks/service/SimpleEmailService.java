@@ -21,11 +21,11 @@ public class SimpleEmailService {
 
     private final JavaMailSender javaMailSender;
 
-    public void send(final Mail mail) {
+    public void send(final Mail mail, String typeOfMail) {
 
         log.info("Starting email preparation...");
         try {
-            MimeMessagePreparator mailMessage = createMimeMessage(mail);
+            MimeMessagePreparator mailMessage = createMimeMessage(mail, typeOfMail);
             javaMailSender.send(mailMessage);
             log.info("Email has been sent.");
         } catch (MailException e) {
@@ -47,12 +47,16 @@ public class SimpleEmailService {
         return mailMessage;
     }
 
-    private MimeMessagePreparator createMimeMessage(final Mail mail) {
+    private MimeMessagePreparator createMimeMessage(final Mail mail, String typeOfMail) {
         return mimeMessage -> {
             MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
             messageHelper.setTo(mail.getMailTo());
             messageHelper.setSubject(mail.getSubject());
-            messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            if (typeOfMail.equals("card")) {
+                messageHelper.setText(mailCreatorService.buildTrelloCardEmail(mail.getMessage()), true);
+            } else if (typeOfMail.equals("daily")) {
+                messageHelper.setText(mailCreatorService.buildDailySumaryEmail(mail.getMessage()), true);
+            }
         };
     }
 }
